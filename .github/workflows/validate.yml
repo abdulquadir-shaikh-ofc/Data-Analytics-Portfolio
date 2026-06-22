@@ -40,8 +40,8 @@ jobs:
           echo "✅ Dataset folder found"
           
           # Check CSV file exists
-          if [ ! -f "$PROJECT_PATH/dataset/superstore_updated.csv" ]; then
-            echo "❌ Missing: superstore_updated.csv"
+          if [ ! -f "$PROJECT_PATH/dataset/superstore_updated_cleaned_product.csv.csv" ]; then
+            echo "❌ Missing: superstore_updated_cleaned_product.csv.csv"
             exit 1
           fi
           echo "✅ CSV file found"
