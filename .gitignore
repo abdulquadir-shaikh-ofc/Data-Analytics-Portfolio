@@ -1,1 +1,20 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.tmp
 
+# Power BI local cache
+.pbi/
+AnalysisServicesWorkspace/
+*.cache
+
+# Compiled files (if you ever build .pbix)
+*.pbix
+builds/
+
+# IDE
+.vscode/
+.idea/
+
+# Node (if you add npm packages later)
+node_modules/
