@@ -3,95 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulquadir - Power BI Portfolio</title>
+    <title>Abdulquadir - Power BI & Data Analytics Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Abdulquadir</a>
+            <a href="#home" class="logo">AQ.</a>
             <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">Portfolio</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Abdulquadir</h1>
-            <p>Building Expert-Level Analytics & Data Visualization Solutions</p>
-            <p style="font-size: 1rem; margin-top: 2rem; opacity: 0.95; font-weight: 400;">Power BI • DAX • Data Modeling • Python • SQL</p>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-label">Hey there 👋</p>
+                <h1>I'm Abdulquadir</h1>
+                <p class="hero-subtitle">Data Analytics & Power BI Expert</p>
+                <p class="hero-description">
+                    I transform complex business data into compelling, interactive dashboards that drive insights and informed decision-making. Specialized in Power BI, DAX, and advanced data visualization.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#work" class="btn btn-secondary">View My Work</a>
+                </div>
+                <p class="hero-tech">Power BI • DAX • Python • SQL • Data Modeling</p>
+            </div>
         </div>
     </section>
 
-    <!-- Projects Grid -->
-    <main class="container">
-        <section class="projects-section">
-            <h2>Featured Work</h2>
-            <p style="text-align: center; color: var(--text-light); margin-bottom: 3rem; font-size: 1.05rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-                Interactive dashboards and analytical solutions showcasing advanced Power BI expertise, sophisticated data modeling, and compelling visual storytelling
-            </p>
-            <div class="projects-grid">
-                <!-- Sales & Retail Analytics Card -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h3>Sales & Retail Analytics</h3>
-                        <span class="badge badge-featured">Featured</span>
-                    </div>
-                    <p class="project-description">
-                        Comprehensive multi-page dashboard analyzing sales performance, product lifecycle trends, regional insights, and customer behavior across a global retail dataset.
-                    </p>
-                    <div class="project-meta">
-                        <span class="meta-item">
-                            <strong>Dataset:</strong> Global Superstore (~60K transactions, $24.5M)
-                        </span>
-                        <span class="meta-item">
-                            <strong>Pages:</strong> 4 (Executive Overview, Product Analysis, Regional Performance, Customer Analytics)
-                        </span>
-                        <span class="meta-item">
-                            <strong>Key Features:</strong> Product lifecycle segmentation, regional performance heatmaps, customer RFM analysis, advanced DAX measures
-                        </span>
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Power BI</span>
-                        <span class="tag">DAX</span>
-                        <span class="tag">Data Visualization</span>
-                        <span class="tag">Retail Analytics</span>
-                    </div>
-                    <a href="projects/sales-retail-analytics.html" class="btn btn-primary">View Dashboard</a>
-                </article>
-
-                <!-- Placeholder for Future Projects -->
-                <article class="project-card project-card-coming">
-                    <div class="project-header">
-                        <h3>Coming Soon</h3>
-                    </div>
-                    <p class="project-description">
-                        Additional portfolio projects across different domains (Finance, HR, Marketing, Operations) coming soon.
-                    </p>
-                    <div class="coming-soon-placeholder">
-                        <p>More dashboards in development...</p>
-                    </div>
-                </article>
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>100+</h3>
+                    <p>DAX Measures</p>
+                </div>
+                <div class="stat-card">
+                    <h3>4</h3>
+                    <p>Report Pages</p>
+                </div>
+                <div class="stat-card">
+                    <h3>$24.5M</h3>
+                    <p>Data Analyzed</p>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>
+                        I'm an expert-level Power BI analyst passionate about transforming raw data into actionable insights. With deep expertise in DAX, data modeling, and visual design, I create production-grade analytical solutions that enable data-driven decision-making.
+                    </p>
+                    <p>
+                        My approach combines technical rigor with user-centered design. Every dashboard I build is optimized for performance, intuitive to navigate, and visually compelling. I specialize in complex data transformations, sophisticated DAX measures, and telling stories through data.
+                    </p>
+                    <p>
+                        When I'm not building dashboards, you'll find me exploring new analytical techniques, writing about data best practices, or contributing to open-source projects.
+                    </p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span class="label">Location:</span>
+                            <span class="value">Colonia, New Jersey</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Availability:</span>
+                            <span class="value">Open for Projects</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Email:</span>
+                            <a href="mailto:contact@example.com" class="value">Get In Touch</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="70" r="40" fill="#6366f1" opacity="0.1"/>
+                            <circle cx="100" cy="100" r="35" fill="#6366f1" opacity="0.15"/>
+                            <path d="M 100 140 Q 85 155 70 160 Q 100 175 130 160 Q 115 155 100 140" fill="#6366f1" opacity="0.1"/>
+                            <rect x="60" y="120" width="80" height="60" rx="8" fill="#6366f1" opacity="0.08"/>
+                        </svg>
+                        <p>Professional Photo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <p class="section-subtitle">Tools and technologies I work with</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Analytics & BI</h3>
+                    <ul class="skill-list">
+                        <li>Power BI Desktop</li>
+                        <li>Power BI Service</li>
+                        <li>Interactive Reports</li>
+                        <li>Dashboard Design</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Data & Languages</h3>
+                    <ul class="skill-list">
+                        <li>DAX (Advanced)</li>
+                        <li>SQL</li>
+                        <li>Python</li>
+                        <li>Data Modeling</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Design & Dev</h3>
+                    <ul class="skill-list">
+                        <li>UI/UX Design</li>
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                        <li>Git/GitHub</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Specialized</h3>
+                    <ul class="skill-list">
+                        <li>Lifecycle Analysis</li>
+                        <li>RFM Segmentation</li>
+                        <li>Time-series Analysis</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work/Projects Section -->
+    <section class="work" id="work">
+        <div class="container">
+            <h2>Featured Work</h2>
+            <p class="section-subtitle">Interactive dashboards and analytics solutions</p>
+            
+            <div class="projects-grid">
+                <!-- Sales & Retail Analytics -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="image-placeholder-project">
+                            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="300" height="200" fill="#f8fafc"/>
+                                <rect x="20" y="20" width="260" height="30" rx="4" fill="#6366f1" opacity="0.2"/>
+                                <rect x="20" y="70" width="120" height="100" rx="4" fill="#6366f1" opacity="0.15"/>
+                                <rect x="160" y="70" width="120" height="100" rx="4" fill="#ec4899" opacity="0.15"/>
+                                <circle cx="80" cy="100" r="15" fill="#6366f1" opacity="0.3"/>
+                                <circle cx="220" cy="120" r="18" fill="#ec4899" opacity="0.3"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Sales & Retail Analytics</h3>
+                        <p class="project-description">
+                            Comprehensive multi-page Power BI dashboard analyzing global retail performance with advanced metrics and lifecycle segmentation.
+                        </p>
+                        <div class="project-stats">
+                            <span class="stat">60K+ Records</span>
+                            <span class="stat">4 Pages</span>
+                            <span class="stat">100+ Measures</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">DAX</span>
+                            <span class="tag">Data Modeling</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://mumid.github.io/data-analytics-portfolio/projects/sales-retail-analytics.html" class="link-btn" target="_blank">View Dashboard →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coming Soon Card -->
+                <div class="project-card project-card-coming">
+                    <div class="project-image">
+                        <div class="image-placeholder-project coming">
+                            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="300" height="200" fill="#f1f5f9"/>
+                                <text x="150" y="110" font-size="24" text-anchor="middle" fill="#94a3b8" font-weight="600">Coming Soon</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>More Projects In Development</h3>
+                        <p class="project-description">
+                            Building a comprehensive portfolio across Finance, HR, Marketing, and Operations analytics.
+                        </p>
+                        <p class="coming-soon-text">Specialized dashboards coming soon...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p class="section-subtitle">Have a project in mind? Let's discuss how I can help</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p><a href="mailto:contact@example.com">contact@example.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>LinkedIn</h3>
+                        <p><a href="https://linkedin.com/in/abdulquadir" target="_blank">linkedin.com/in/abdulquadir</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>GitHub</h3>
+                        <p><a href="https://github.com/mumid" target="_blank">github.com/mumid</a></p>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="footer-content">
-            <h3>Get In Touch</h3>
-            <p>Interested in collaborating or learning more about these projects?</p>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/abdulquadir" class="social-link" target="_blank">LinkedIn</a>
-                <a href="https://github.com/mumid" class="social-link" target="_blank">GitHub</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Abdulquadir. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact">Contact</a>
+                </div>
             </div>
-            <p class="footer-note">&copy; 2026 Abdulquadir. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
