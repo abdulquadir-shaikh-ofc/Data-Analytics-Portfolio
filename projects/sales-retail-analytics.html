@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales & Retail Analytics Dashboard | Abdulquadir</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Abdulquadir</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Portfolio</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <a href="../index.html" class="back-link">Back to Portfolio</a>
+
+        <!-- Header Section -->
+        <div class="dashboard-header">
+            <h1>Sales & Retail Analytics Dashboard</h1>
+            <p>Comprehensive multi-page interactive dashboard analyzing global retail performance, product trends, regional insights, and customer behavior patterns.</p>
+            <div class="dashboard-meta">
+                <div class="meta-item-inline">
+                    <strong>Published</strong>
+                    <span>June 2026</span>
+                </div>
+                <div class="meta-item-inline">
+                    <strong>Data Points</strong>
+                    <span>~60,000 transactions | $24.5M total sales</span>
+                </div>
+                <div class="meta-item-inline">
+                    <strong>Report Pages</strong>
+                    <span>4 interactive pages</span>
+                </div>
+                <div class="meta-item-inline">
+                    <strong>Technology</strong>
+                    <span>Power BI Desktop, DAX</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Embedded Dashboard -->
+        <div class="dashboard-embed">
+            <iframe 
+                title="Sales & Retail Analytics Dashboard" 
+                src="https://app.powerbi.com/view?r=eyJrIjoiMTFhNjMyZTctYWZmOS00ZDdhLTk1YTctYjYxNmU0ZWY5NTYwIiwidCI6ImNkYTI5ZjUzLTkxNDQtNGZmOC1iZTZkLWQxMDVkZjU1ZDQ1NSJ9&embedImagePlaceholder=true&pageName=overview"
+                allowfullscreen="true"
+                frameborder="0"
+            ></iframe>
+        </div>
+
+        <!-- Documentation Section -->
+        <div class="documentation-section">
+            <h2>Project Documentation</h2>
+
+            <!-- Overview -->
+            <div class="section-content">
+                <h3>Project Overview</h3>
+                <p>
+                    This dashboard demonstrates expert-level Power BI proficiency through a multi-page, fully interactive analytical solution. The project showcases advanced data modeling, DAX optimization, and professional visual design across four complementary reporting perspectives.
+                </p>
+            </div>
+
+            <!-- Dataset -->
+            <div class="section-content">
+                <h3>Dataset & Preparation</h3>
+                <p>
+                    <strong>Source:</strong> Kaggle Global Superstore Dataset (transformed and enhanced)
+                </p>
+                <p>
+                    <strong>Scope:</strong>
+                </p>
+                <ul>
+                    <li>~60,000 transaction records</li>
+                    <li>5 product categories (original 3 + 2 synthetic: Electronics & Gadgets, Health & Wellness)</li>
+                    <li>23 sub-categories across global markets</li>
+                    <li>Total sales: $24.5M with diverse geographic and temporal distribution</li>
+                </ul>
+                <p>
+                    <strong>Data Transformations Applied:</strong>
+                </p>
+                <ul>
+                    <li><strong>Date Shifting:</strong> Dataset dates adjusted so the most recent order aligns with mid-2026 (current reporting period)</li>
+                    <li><strong>Product ID Reconstruction:</strong> Rebuilt product identifiers to enforce strict one-to-one mapping between product names and IDs, eliminating data quality anomalies</li>
+                    <li><strong>Lifecycle Segmentation:</strong> Added Product.Lifecycle column classifying products into New, Growing, Declining, or Mature using comparable year-over-year (YoY) window logic (Jan 1–Jun 18, both years) to avoid partial-year bias</li>
+                    <li><strong>Synthetic Category Generation:</strong> Created realistic, differentiated product categories (Electronics & Gadgets, Health & Wellness) with appropriate pricing and volume distributions to add portfolio diversity</li>
+                    <li><strong>Sales Restructuring:</strong> Redistributed sales volumes to reflect realistic market dynamics across all categories</li>
+                </ul>
+            </div>
+
+            <!-- Report Pages -->
+            <div class="section-content">
+                <h3>Report Architecture (4 Pages)</h3>
+                <p><strong>Page 1: Executive Overview</strong></p>
+                <ul>
+                    <li>High-level KPI summary (Total Sales, Profit, Margin %, Order Count)</li>
+                    <li>Year-to-date performance vs. prior period trends</li>
+                    <li>Sales by category overview with profit contribution breakdown</li>
+                    <li>Top 10 products by revenue</li>
+                </ul>
+                <p><strong>Page 2: Product Analysis</strong></p>
+                <ul>
+                    <li>Product lifecycle segmentation (New, Growing, Declining, Mature)</li>
+                    <li>Category performance heatmap with detailed metrics</li>
+                    <li>Product performance ranking with margin analysis</li>
+                    <li>Sales trend analysis by product lifecycle stage</li>
+                    <li>Profitability vs. volume scatter analysis</li>
+                </ul>
+                <p><strong>Page 3: Regional Performance</strong></p>
+                <ul>
+                    <li>Geographic heat map showing regional sales density</li>
+                    <li>Top performing countries and regions</li>
+                    <li>Regional margin analysis and profitability comparison</li>
+                    <li>Market penetration and growth trends by region</li>
+                </ul>
+                <p><strong>Page 4: Customer Analytics</strong></p>
+                <ul>
+                    <li>RFM (Recency, Frequency, Monetary) segmentation</li>
+                    <li>Customer lifetime value distribution</li>
+                    <li>Repeat purchase analysis and customer retention</li>
+                    <li>Customer acquisition and churn trends</li>
+                </ul>
+            </div>
+
+            <!-- Key Metrics & DAX -->
+            <div class="section-content">
+                <h3>Key Metrics & Advanced DAX Measures</h3>
+                <p>The dashboard includes 100+ optimized DAX measures covering:</p>
+                <ul>
+                    <li><strong>Revenue Analysis:</strong> Total Sales, Average Order Value, Sales Growth YoY, Sales per Customer</li>
+                    <li><strong>Profitability:</strong> Gross Profit, Profit Margin %, Operating Margin, Margin by Category</li>
+                    <li><strong>Customer Metrics:</strong> Total Customers, New Customers, Repeat Customers, Customer Retention Rate, Customer Lifetime Value</li>
+                    <li><strong>Product Performance:</strong> Product Count, Average Price, Units Sold, Product Turnover</li>
+                    <li><strong>Time-based Analytics:</strong> Period comparisons, rolling calculations, YoY growth rates</li>
+                    <li><strong>Advanced Calculations:</strong> Lifecycle-based aggregations, regional benchmarking, customer segmentation</li>
+                </ul>
+                <p class="code-block">Sample DAX patterns include: CALCULATE with FILTER, SUMX/SUMPRODUCT for weighted calculations, RANKX for ranking, date-based DATESBETWEEN for dynamic period selection, and IF/SWITCH for conditional logic.</p>
+            </div>
+
+            <!-- Design & Interactivity -->
+            <div class="section-content">
+                <h3>Design & Interactivity</h3>
+                <p>
+                    <strong>Visual Design:</strong> Custom Power BI theme with consistent color palette, typography, and spacing ensuring a professional, polished appearance across all pages.
+                </p>
+                <p>
+                    <strong>Interactive Elements:</strong>
+                </p>
+                <ul>
+                    <li>Slicers for date range, product category, region, and customer segment filtering</li>
+                    <li>Cross-filtering between visualizations for cohesive exploration</li>
+                    <li>Drill-through capabilities from summary to detail levels</li>
+                    <li>Bookmark-driven navigation for user-guided exploration paths</li>
+                </ul>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div class="section-content">
+                <h3>Technical Implementation</h3>
+                <p>
+                    <strong>Development Environment:</strong> Power BI Desktop (offline-first approach)
+                </p>
+                <p>
+                    <strong>Publishing:</strong> Power BI "Publish to Web" feature for public, non-authenticated access
+                </p>
+                <p>
+                    <strong>Data Model:</strong> Optimized relational schema with proper cardinality relationships (1:* from Dimension to Fact tables), avoiding bridge table anti-patterns and ensuring efficient DAX evaluation.
+                </p>
+                <p>
+                    <strong>Performance Considerations:</strong>
+                </p>
+                <ul>
+                    <li>Aggregated fact tables for executive-level summaries</li>
+                    <li>Calculated columns used sparingly; measures preferred for flexibility</li>
+                    <li>Query folding leveraged where applicable to push computation to source</li>
+                </ul>
+            </div>
+
+            <!-- Key Insights -->
+            <div class="section-content">
+                <h3>Key Insights Demonstrated</h3>
+                <ul>
+                    <li>Category-level performance variance showing clear winners and underperformers</li>
+                    <li>Product lifecycle dynamics revealing natural innovation and maturation cycles</li>
+                    <li>Geographic opportunity mapping identifying high-growth and high-margin regions</li>
+                    <li>Customer segmentation revealing loyalty patterns and revenue concentration</li>
+                </ul>
+            </div>
+
+            <!-- Skills Demonstrated -->
+            <div class="section-content">
+                <h3>Skills Demonstrated</h3>
+                <ul>
+                    <li><strong>Power BI:</strong> Multi-page report design, advanced visualization techniques, interactive filtering and drill-through</li>
+                    <li><strong>DAX:</strong> Complex measure authoring, time-based calculations, contextual aggregations, optimization techniques</li>
+                    <li><strong>Data Modeling:</strong> Schema design, relationship optimization, cardinality enforcement</li>
+                    <li><strong>Data Transformation:</strong> ETL process design, Python-based data preparation, quality assurance</li>
+                    <li><strong>Business Analytics:</strong> KPI identification, metric definition, insight synthesis</li>
+                    <li><strong>Visual Communication:</strong> Chart selection, color theory application, user-centered design</li>
+                </ul>
+            </div>
+
+            <!-- Differentiators -->
+            <div class="section-content">
+                <h3>Portfolio Differentiators</h3>
+                <p>
+                    Unlike generic Kaggle-based projects, this dashboard stands out through:
+                </p>
+                <ul>
+                    <li><strong>Custom synthetic categories:</strong> Demonstrates realistic data augmentation and domain understanding</li>
+                    <li><strong>Advanced lifecycle segmentation:</strong> Shows sophisticated time-series analysis and bias mitigation</li>
+                    <li><strong>Comprehensive data transformation:</strong> Highlights rigorous data quality and preparation practices</li>
+                    <li><strong>Professional multi-page architecture:</strong> Demonstrates complex report design and narrative flow</li>
+                    <li><strong>Production-ready DAX:</strong> 100+ optimized measures showcasing deep Power BI expertise</li>
+                </ul>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="section-content">
+                <h3>Portfolio Expansion</h3>
+                <p>
+                    This flagship project is followed by additional portfolio dashboards across domains including Finance, HR, Marketing, and Operations, each demonstrating specialized analytical techniques and domain expertise.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Get In Touch</h3>
+            <p>Interested in collaborating or learning more about these projects?</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/abdulquadir" class="social-link" target="_blank">LinkedIn</a>
+                <a href="https://github.com/mumid" class="social-link" target="_blank">GitHub</a>
+            </div>
+            <p class="footer-note">&copy; 2026 Abdulquadir. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
