@@ -12,17 +12,39 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Check repository structure
+      - name: Validate Sales & Retail Analytics project
         run: |
-          echo "✅ Checking repository structure..."
+          echo "🔍 Validating Sales & Retail Analytics project..."
           
-          # Check if projects folder exists
-          if [ ! -d "projects" ]; then
-            echo "❌ projects folder not found"
+          PROJECT_PATH="projects/sales-retail-analytics"
+          
+          # Check HTML file exists
+          if [ ! -f "$PROJECT_PATH/sales-retail-analytics.html" ]; then
+            echo "❌ Missing: sales-retail-analytics.html"
             exit 1
           fi
+          echo "✅ HTML file found"
           
-          echo "✅ Repository structure is valid"
+          # Check PBIP folder exists
+          if [ ! -d "$PROJECT_PATH/pbip" ]; then
+            echo "❌ Missing: pbip folder"
+            exit 1
+          fi
+          echo "✅ PBIP folder found"
+          
+          # Check dataset folder exists
+          if [ ! -d "$PROJECT_PATH/dataset" ]; then
+            echo "❌ Missing: dataset folder"
+            exit 1
+          fi
+          echo "✅ Dataset folder found"
+          
+          # Check CSV file exists
+          if [ ! -f "$PROJECT_PATH/dataset/superstore_updated.csv" ]; then
+            echo "❌ Missing: superstore_updated.csv"
+            exit 1
+          fi
+          echo "✅ CSV file found"
+          
           echo ""
-          echo "📁 Current structure:"
-          ls -la projects/
+          echo "✅ All validations passed!"
