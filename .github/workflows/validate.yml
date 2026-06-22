@@ -1,0 +1,28 @@
+name: Validate Repository
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check repository structure
+        run: |
+          echo "✅ Checking repository structure..."
+          
+          # Check if projects folder exists
+          if [ ! -d "projects" ]; then
+            echo "❌ projects folder not found"
+            exit 1
+          fi
+          
+          echo "✅ Repository structure is valid"
+          echo ""
+          echo "📁 Current structure:"
+          ls -la projects/
