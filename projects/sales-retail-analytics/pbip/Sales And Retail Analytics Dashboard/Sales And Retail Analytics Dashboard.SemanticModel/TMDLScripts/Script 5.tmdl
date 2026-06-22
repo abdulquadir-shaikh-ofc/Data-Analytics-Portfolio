@@ -1,0 +1,41 @@
+createOrReplace
+
+	table DimCustomer
+		lineageTag: e54fb71c-75fe-41d7-9fcc-295088020c73
+
+		column CustomerID
+			dataType: string
+			lineageTag: dadd9156-7c8a-414b-92fb-792aa2ceb1db
+			summarizeBy: none
+			sourceColumn: CustomerID
+
+			annotation SummarizationSetBy = Automatic
+
+		column CustomerName
+			dataType: string
+			lineageTag: be0c9d71-36eb-4975-be08-76f6072e9109
+			summarizeBy: none
+			sourceColumn: CustomerName
+
+			annotation SummarizationSetBy = Automatic
+
+		column Segment
+			dataType: string
+			lineageTag: d1340a33-d47a-4daa-b3d9-50673d8dfdc2
+			summarizeBy: none
+			sourceColumn: Segment
+
+			annotation SummarizationSetBy = Automatic
+
+		partition DimCustomer = m
+			mode: import
+			source =
+					let
+					    Source = Table.Distinct(Table.SelectColumns(FactSales, {"CustomerID", "CustomerName", "Segment"}))
+					in
+					    Source
+
+		annotation PBI_NavigationStepName = Navigation
+
+		annotation PBI_ResultType = Table
+

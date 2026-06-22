@@ -1,0 +1,113 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 571,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 852.38305001469394,
+            "y": 25
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "84c12c6f-1e53-4506-977d-2801da90f21d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.38305001469382,
+            "y": 16.585095630278147
+          },
+          "nodeIndex": "DimCustomer",
+          "nodeLineageTag": "e54fb71c-75fe-41d7-9fcc-295088020c73",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -25.429793590123154
+          },
+          "nodeIndex": "DimDate",
+          "nodeLineageTag": "91cc1cb6-a8b6-487f-ae09-fa7f90608483",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136.3830500146939,
+            "y": 87
+          },
+          "nodeIndex": "DimGeography",
+          "nodeLineageTag": "30cf4c3d-b4ae-4bcf-87ec-c3fc1492d22b",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420.3830500146939,
+            "y": 87
+          },
+          "nodeIndex": "DimProduct",
+          "nodeLineageTag": "4a2c64a8-598a-433e-9c7c-80b782b9decc",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.20156119318534,
+            "y": -24.570206409876789
+          },
+          "nodeIndex": "FactSales",
+          "nodeLineageTag": "42aef373-4315-40ae-bb49-356c4700d2f5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1888.3830500146939,
+            "y": 99.214896795061577
+          },
+          "nodeIndex": "Parameter",
+          "nodeLineageTag": "67495e80-9d70-4814-9a83-75d73ec70937",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

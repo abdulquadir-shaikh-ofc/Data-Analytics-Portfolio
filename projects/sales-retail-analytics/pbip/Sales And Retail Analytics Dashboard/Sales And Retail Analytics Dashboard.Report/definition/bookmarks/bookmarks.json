@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "aeffe45963e9586be7aa",
+      "displayName": "Customer Insights",
+      "children": [
+        "de74df9c59709db16695",
+        "dcf97514b32ba270169b",
+        "7cea228a47db6b6b7d63"
+      ]
+    },
+    {
+      "name": "1b7854e0a5b0003bebc2",
+      "displayName": "Region Performance",
+      "children": [
+        "4dcbc483324237aa0cb1",
+        "61841316c91060a750da",
+        "3861f3739042cc848d56",
+        "2ea1594220a68a4d6276"
+      ]
+    }
+  ]
+}

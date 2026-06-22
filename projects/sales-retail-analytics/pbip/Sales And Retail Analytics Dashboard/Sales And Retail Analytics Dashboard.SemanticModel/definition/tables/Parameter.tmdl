@@ -1,0 +1,51 @@
+table Parameter
+	lineageTag: 67495e80-9d70-4814-9a83-75d73ec70937
+
+	column Metric
+		lineageTag: 91871dfb-c2b7-4503-b557-d9426bce2c77
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Metric Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Metric Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric Fields'
+		isHidden
+		lineageTag: 2d605d32-f08f-42f5-9da3-7b84ab0f3093
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Metric Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric Order'
+		isHidden
+		formatString: 0
+		lineageTag: 2b928ede-69b0-4558-a93a-2b5de402f3bf
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter = calculated
+		mode: import
+		source =
+				{
+				    ("Sales", NAMEOF('_Measures'[Total Sales]), 0),
+				    ("Profit", NAMEOF('_Measures'[Total Profit]), 1),
+				    ("Quantity", NAMEOF('_Measures'[Total Quantity]), 2),
+				    ("Orders", NAMEOF('_Measures'[Total Orders]), 3),
+				    ("Customers", NAMEOF('_Measures'[Total Customers]), 4)
+				}
+
+	annotation PBI_Id = 53cc1fcad3a34caea061eb35fdc0aae3
+

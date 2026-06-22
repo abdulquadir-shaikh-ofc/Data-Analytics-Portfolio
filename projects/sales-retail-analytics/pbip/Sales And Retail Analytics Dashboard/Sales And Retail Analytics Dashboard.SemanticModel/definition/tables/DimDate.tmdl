@@ -1,0 +1,103 @@
+table DimDate
+	lineageTag: 91cc1cb6-a8b6-487f-ae09-fa7f90608483
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6298ae3d-f628-4800-96d8-569632233937
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: string
+		lineageTag: b4a94c2a-43b7-4a3c-99ed-e15ad920a579
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: 79544608-93ab-4fba-b044-6be1be0c6835
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 43ca1671-9907-472f-b6e2-5b67a8943af8
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: 443e2d09-1662-492c-93b3-60108e9c4663
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		dataType: string
+		lineageTag: af5da5db-2ef4-4995-a4af-65af99aa8c70
+		summarizeBy: none
+		sourceColumn: Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: string
+		lineageTag: 6386fa11-c53b-4520-9e2c-14c3e300a5e5
+		summarizeBy: none
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayName
+		dataType: string
+		lineageTag: 83a768ed-9dc1-4170-8b2d-8932d2a80a48
+		summarizeBy: none
+		sourceColumn: DayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: string
+		lineageTag: f0f250b2-7a78-438d-b33a-f4f30aeb13e3
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    StartDate = #date(2021, 1, 1),
+				    EndDate = #date(2026, 12, 31),
+				    NumberOfDays = Duration.Days(EndDate - StartDate) + 1,
+				    Dates = List.Dates(StartDate, NumberOfDays, #duration(1,0,0,0)),
+				    #"Converted to Table" = Table.FromList(Dates, Splitter.SplitByNothing(), {"Date"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Converted to Table",{{"Date", type date}}),
+				    #"Added Year" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Date])),
+				    #"Added Quarter" = Table.AddColumn(#"Added Year", "Quarter", each "Q" & Text.From(Date.QuarterOfYear([Date]))),
+				    #"Added Month" = Table.AddColumn(#"Added Quarter", "Month", each Date.Month([Date])),
+				    #"Added Month Name" = Table.AddColumn(#"Added Month", "MonthName", each Date.MonthName([Date])),
+				    #"Added Week" = Table.AddColumn(#"Added Month Name", "Week", each Date.WeekOfYear([Date])),
+				    #"Added Day" = Table.AddColumn(#"Added Week", "Day", each Date.Day([Date])),
+				    #"Added Day Name" = Table.AddColumn(#"Added Day", "DayName", each Date.DayOfWeekName([Date])),
+				    #"Added Year-Month" = Table.AddColumn(#"Added Day Name", "YearMonth", each Date.Year([Date]) * 100 + Date.Month([Date]))
+				in
+				    #"Added Year-Month"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

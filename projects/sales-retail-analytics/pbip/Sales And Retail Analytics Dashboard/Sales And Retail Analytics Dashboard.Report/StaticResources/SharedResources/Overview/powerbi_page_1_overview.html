@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI - Page 1: Executive Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .powerbi-canvas {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .page-indicator {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 100;
+        }
+        
+        .page-tabs {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(30, 41, 59, 0.95);
+            display: flex;
+            padding: 0 20px;
+            gap: 4px;
+            z-index: 100;
+        }
+        
+        .page-tab {
+            padding: 12px 24px;
+            color: #94a3b8;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .page-tab.active {
+            background: white;
+            color: #1e293b;
+        }
+        
+        .page-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px 40px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-left h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+        
+        .header-left p {
+            font-size: 13px;
+            color: #64748b;
+        }
+        
+        .header-filters {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .slicer {
+            width: 140px;
+            height: 50px;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 12px;
+            cursor: pointer;
+        }
+        
+        .slicer-label {
+            font-size: 10px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .slicer-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 2px;
+        }
+        
+        /* KPI Section */
+        .kpi-row {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+        
+        .kpi-card {
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 120px;
+        }
+        
+        .kpi-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .kpi-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        
+        .kpi-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        .kpi-trend {
+            position: absolute;
+            bottom: 12px;
+            right: 14px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .trend-up {
+            color: #10b981;
+        }
+        
+        .trend-down {
+            color: #ef4444;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        
+        .chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .chart-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .chart-controls {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .chart-btn {
+            padding: 6px 14px;
+            border: 1px solid #cbd5e1;
+            background: white;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #64748b;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .chart-btn.active {
+            background: #667eea;
+            border-color: #667eea;
+            color: white;
+        }
+        
+        .chart-area {
+            height: 200px;
+            background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 13px;
+            border: 1px dashed #cbd5e1;
+        }
+        
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .chart-area.donut {
+            height: 180px;
+        }
+        
+        .dimension-label {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-size: 9px;
+            color: #cbd5e1;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="powerbi-canvas">
+        <div class="page-indicator">PAGE 1 OF 4 - Executive Overview</div>
+        
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <h1>📊 Sales & Retail Analytics Dashboard</h1>
+                <p>Superstore Performance Overview (2011-2014)</p>
+            </div>
+            <div class="header-filters">
+                <div class="slicer">
+                    <div class="slicer-label">Year</div>
+                    <div class="slicer-value">All Years ▾</div>
+                </div>
+                <div class="slicer">
+                    <div class="slicer-label">Region</div>
+                    <div class="slicer-value">All Regions ▾</div>
+                </div>
+                <div class="slicer">
+                    <div class="slicer-label">Category</div>
+                    <div class="slicer-value">All ▾</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- KPI Cards -->
+        <div class="kpi-row">
+            <div class="kpi-card">
+                <div class="kpi-icon" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">💰</div>
+                <div class="kpi-label">Total Sales</div>
+                <div class="kpi-value">$12.6M</div>
+                <div class="kpi-trend trend-up">↑ 23.4%</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon" style="background: linear-gradient(135deg, #10b981, #059669); color: white;">📈</div>
+                <div class="kpi-label">Total Profit</div>
+                <div class="kpi-value">$1.47M</div>
+                <div class="kpi-trend trend-up">↑ 18.2%</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white;">📊</div>
+                <div class="kpi-label">Profit Margin</div>
+                <div class="kpi-value">11.6%</div>
+                <div class="kpi-trend trend-down">↓ 1.2%</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white;">🛒</div>
+                <div class="kpi-label">Total Orders</div>
+                <div class="kpi-value">25,035</div>
+                <div class="kpi-trend trend-up">↑ 15.8%</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon" style="background: linear-gradient(135deg, #ec4899, #db2777); color: white;">👥</div>
+                <div class="kpi-label">Customers</div>
+                <div class="kpi-value">4,873</div>
+                <div class="kpi-trend trend-up">↑ 12.3%</div>
+            </div>
+        </div>
+        
+        <!-- Main Charts -->
+        <div class="main-content">
+            <!-- Trend Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">Sales Trend Over Time</div>
+                    <div class="chart-controls">
+                        <button class="chart-btn active">Sales</button>
+                        <button class="chart-btn">Profit</button>
+                        <button class="chart-btn">Orders</button>
+                    </div>
+                </div>
+                <div class="chart-area">Line & Area Chart - Monthly Sales Trend (2011-2014)</div>
+                <div class="dimension-label">1200 x 200</div>
+            </div>
+            
+            <!-- Breakdown Charts -->
+            <div class="two-col">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">Sales by Category</div>
+                    </div>
+                    <div class="chart-area donut">Donut Chart<br>Office Supplies • Technology • Furniture</div>
+                    <div class="dimension-label">590 x 180</div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">Sales by Customer Segment</div>
+                    </div>
+                    <div class="chart-area donut">Donut Chart<br>Consumer • Corporate • Home Office</div>
+                    <div class="dimension-label">590 x 180</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Tabs -->
+        <div class="page-tabs">
+            <div class="page-tab active">📊 Overview</div>
+            <div class="page-tab">📦 Products</div>
+            <div class="page-tab">🗺️ Regional</div>
+            <div class="page-tab">👥 Customer</div>
+        </div>
+    </div>
+</body>
+</html>

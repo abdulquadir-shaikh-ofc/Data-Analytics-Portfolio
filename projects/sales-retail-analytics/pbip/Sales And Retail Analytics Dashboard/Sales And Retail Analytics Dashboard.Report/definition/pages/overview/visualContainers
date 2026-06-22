@@ -1,0 +1,76 @@
+[
+  {
+    "name": "vc_header",
+    "displayName": "Header - Title & Filters",
+    "type": "textBox",
+    "layout": { "x": 0, "y": 0, "z": 1, "width": 1920, "height": 100 },
+    "config": {
+      "visualType": "textBox",
+      "title": { "text": "📊 Sales & Retail Analytics Dashboard\nSuperstore Performance Overview (2011-2014)", "show": true }
+    }
+  },
+  {
+    "name": "vc_kpi_1",
+    "displayName": "KPI - Total Sales",
+    "type": "card",
+    "layout": { "x": 20, "y": 120, "z": 2, "width": 360, "height": 140 },
+    "config": { "visualType": "card", "title": { "text": "Total Sales", "show": true } },
+    "bindings": { "value": { "measure": "[Total Sales]" } }
+  },
+  {
+    "name": "vc_kpi_2",
+    "displayName": "KPI - Total Profit",
+    "type": "card",
+    "layout": { "x": 400, "y": 120, "z": 2, "width": 360, "height": 140 },
+    "config": { "visualType": "card", "title": { "text": "Total Profit", "show": true } },
+    "bindings": { "value": { "measure": "[Total Profit]" } }
+  },
+  {
+    "name": "vc_kpi_3",
+    "displayName": "KPI - Profit Margin",
+    "type": "card",
+    "layout": { "x": 780, "y": 120, "z": 2, "width": 360, "height": 140 },
+    "config": { "visualType": "card", "title": { "text": "Profit Margin", "show": true } },
+    "bindings": { "value": { "measure": "[Profit Margin %]" } }
+  },
+  {
+    "name": "vc_kpi_4",
+    "displayName": "KPI - Total Orders",
+    "type": "card",
+    "layout": { "x": 1160, "y": 120, "z": 2, "width": 360, "height": 140 },
+    "config": { "visualType": "card", "title": { "text": "Total Orders", "show": true } },
+    "bindings": { "value": { "measure": "[Total Orders]" } }
+  },
+  {
+    "name": "vc_kpi_5",
+    "displayName": "KPI - Customers",
+    "type": "card",
+    "layout": { "x": 1540, "y": 120, "z": 2, "width": 360, "height": 140 },
+    "config": { "visualType": "card", "title": { "text": "Customers", "show": true } },
+    "bindings": { "value": { "measure": "[Total Customers]" } }
+  },
+  {
+    "name": "vc_trend",
+    "displayName": "Trend - Sales Over Time",
+    "type": "lineChart",
+    "layout": { "x": 20, "y": 280, "z": 2, "width": 1240, "height": 300 },
+    "config": { "visualType": "lineChart", "title": { "text": "Sales Trend Over Time", "show": true } },
+    "bindings": { "value": { "measure": "[Total Sales]" }, "axis": { "field": "DimDate[Date]" } }
+  },
+  {
+    "name": "vc_donut_1",
+    "displayName": "Donut - Sales by Category",
+    "type": "donutChart",
+    "layout": { "x": 1280, "y": 280, "z": 2, "width": 600, "height": 220 },
+    "config": { "visualType": "donutChart", "title": { "text": "Sales by Category", "show": true } },
+    "bindings": { "value": { "measure": "[Total Sales]" }, "category": { "field": "FactSales[Category]" } }
+  },
+  {
+    "name": "vc_donut_2",
+    "displayName": "Donut - Sales by Customer Segment",
+    "type": "donutChart",
+    "layout": { "x": 1280, "y": 520, "z": 2, "width": 600, "height": 220 },
+    "config": { "visualType": "donutChart", "title": { "text": "Sales by Customer Segment", "show": true } },
+    "bindings": { "value": { "measure": "[Total Sales]" }, "category": { "field": "FactSales[Segment]" } }
+  }
+]

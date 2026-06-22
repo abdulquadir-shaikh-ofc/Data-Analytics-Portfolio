@@ -1,0 +1,10 @@
+createOrReplace
+
+	relationship AutoDetected_14cbd402-ce4a-4c9b-ad5f-771687369821
+		fromColumn: FactSales.CustomerID
+		toColumn: DimCustomer.CustomerID
+
+	relationship 8f6e909e-9dd0-25d9-7451-e1b1a40e835c
+		fromColumn: FactSales.OrderDate
+		toColumn: DimDate.Date
+

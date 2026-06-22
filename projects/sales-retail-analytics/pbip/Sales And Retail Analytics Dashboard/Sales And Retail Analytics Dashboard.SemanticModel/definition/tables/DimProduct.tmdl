@@ -1,0 +1,48 @@
+table DimProduct
+	lineageTag: 4a2c64a8-598a-433e-9c7c-80b782b9decc
+
+	column ProductID
+		dataType: string
+		lineageTag: 256b659c-6204-4a55-ac72-11cf3d9dce31
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: a97a5c7e-36dc-4729-aaaf-d56f58bd3607
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: a946ee7f-9175-4620-a1da-a5c511f57035
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategory
+		dataType: string
+		lineageTag: 305f8797-a7dc-4e0a-93fa-0e37e334fc1f
+		summarizeBy: none
+		sourceColumn: SubCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimProduct = m
+		mode: import
+		source =
+				let
+				    Source = Table.Distinct(Table.SelectColumns(FactSales, {"ProductID", "ProductName", "Category", "SubCategory"})),
+				    #"Removed Duplicates" = Table.Distinct(Source)
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

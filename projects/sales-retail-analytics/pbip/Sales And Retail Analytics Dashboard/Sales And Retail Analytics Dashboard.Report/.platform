@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Sales And Retail Analytics Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a5f8d14a-a43e-4d3e-8618-9e9c37a5703f"
+  }
+}

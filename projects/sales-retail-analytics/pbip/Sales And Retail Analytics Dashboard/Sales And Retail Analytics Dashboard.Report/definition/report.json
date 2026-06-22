@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "Fluent2-CY26SU05",
+      "reportVersionAtImport": {
+        "visual": "2.9.0",
+        "report": "3.3.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Sales_&_Retail_Analytics_Theme16897961559199193.json",
+      "reportVersionAtImport": {
+        "visual": "2.10.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "Fluent2-CY26SU05",
+          "path": "BaseThemes/Fluent2-CY26SU05.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Customer_Analysis3185856602686552.png",
+          "path": "Customer_Analysis3185856602686552.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-best-sales-6408774626537802888.png",
+          "path": "icons8-best-sales-6408774626537802888.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-customer-value-4811598699601061813.png",
+          "path": "icons8-customer-value-4811598699601061813.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-customers-4811814763275279305.png",
+          "path": "icons8-customers-4811814763275279305.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-order-completed-485967173735337828.png",
+          "path": "icons8-order-completed-485967173735337828.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-order-completed-48978149915209083.png",
+          "path": "icons8-order-completed-48978149915209083.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-products-647296390170721333.png",
+          "path": "icons8-products-647296390170721333.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-profit-482121007068370917.png",
+          "path": "icons8-profit-482121007068370917.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-profit-margin-646389571152851832.png",
+          "path": "icons8-profit-margin-646389571152851832.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-repeat-486162588848054656.png",
+          "path": "icons8-repeat-486162588848054656.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-total-sales-481638739515285068.png",
+          "path": "icons8-total-sales-481638739515285068.png",
+          "type": "Image"
+        },
+        {
+          "name": "Overview46109660806876795.png",
+          "path": "Overview46109660806876795.png",
+          "type": "Image"
+        },
+        {
+          "name": "Product_Analysis4750428041392776.png",
+          "path": "Product_Analysis4750428041392776.png",
+          "type": "Image"
+        },
+        {
+          "name": "Regional_Analysis05849392571453371.png",
+          "path": "Regional_Analysis05849392571453371.png",
+          "type": "Image"
+        },
+        {
+          "name": "Sales_&_Retail_Analytics_Theme16897961559199193.json",
+          "path": "Sales_&_Retail_Analytics_Theme16897961559199193.json",
+          "type": "CustomTheme"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultFilterActionIsDataFilter": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true,
+    "queryLimitOption": "None",
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
+  }
+}

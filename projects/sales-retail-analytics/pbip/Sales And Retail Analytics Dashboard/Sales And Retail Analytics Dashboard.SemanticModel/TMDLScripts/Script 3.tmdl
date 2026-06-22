@@ -1,0 +1,49 @@
+createOrReplace
+
+	table DimGeography
+		lineageTag: 30cf4c3d-b4ae-4bcf-87ec-c3fc1492d22b
+
+		column Country
+			dataType: string
+			lineageTag: 77376d18-3f2f-4f73-8b45-abd28e40e849
+			summarizeBy: none
+			sourceColumn: Country
+
+			annotation SummarizationSetBy = Automatic
+
+		column State
+			dataType: string
+			lineageTag: e0f86dbf-fabe-4bd7-bf7c-6cb703800a7e
+			summarizeBy: none
+			sourceColumn: State
+
+			annotation SummarizationSetBy = Automatic
+
+		column City
+			dataType: string
+			lineageTag: c282da93-da17-4fa3-ac1b-edba2e41dc55
+			summarizeBy: none
+			sourceColumn: City
+
+			annotation SummarizationSetBy = Automatic
+
+		column Region
+			dataType: string
+			lineageTag: c889c5b9-eb97-4184-aa5a-1ba8e8c7120f
+			summarizeBy: none
+			sourceColumn: Region
+
+			annotation SummarizationSetBy = Automatic
+
+		partition DimGeography = m
+			mode: import
+			source =
+					let
+					    Source = Table.Distinct(Table.SelectColumns(FactSales, {"Country", "State", "City", "Region"}))
+					in
+					    Source
+
+		annotation PBI_NavigationStepName = Navigation
+
+		annotation PBI_ResultType = Table
+

@@ -1,0 +1,239 @@
+table FactSales
+	lineageTag: 42aef373-4315-40ae-bb49-356c4700d2f5
+
+	column Category
+		dataType: string
+		lineageTag: 268c4105-2acd-4d65-b563-f4d639efc069
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 8b5d23ef-0f78-464b-a062-48d2a3388fde
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 101f1f1c-f802-4c77-a04b-b0fc807a49ba
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: string
+		lineageTag: cb8ece31-8da6-4d75-8068-e9df4059281a
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		lineageTag: 3c2b886e-c63b-4a8d-9bfd-b84e6b0c1b71
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount
+		dataType: int64
+		formatString: 0
+		lineageTag: 8074ab12-5c8f-4322-a8d9-1ffeed7d07ff
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4440315e-c5e7-4d0a-a6d5-85c699d012eb
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OrderID
+		dataType: string
+		lineageTag: 1a5dcbfd-ccf4-4000-9569-2706dbce9574
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderPriority
+		dataType: string
+		lineageTag: 32b79dbe-5e5b-46ce-917b-b31732536d7a
+		summarizeBy: none
+		sourceColumn: OrderPriority
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: string
+		lineageTag: 1fcf85a8-56d5-4d01-a658-61491083d3c5
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: acbf3a89-ea3e-40ab-ab81-5cc573761394
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Profit
+		dataType: double
+		lineageTag: 64c85723-e73e-4334-b364-e1aeda684436
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 52e29a7a-d5de-4af4-9fbe-b6dcd33b3fe2
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: d9ac0242-38bc-40ae-8b81-88860455af02
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c9df4d2-8528-4864-a277-556ffd85f063
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: 4a834fc6-3251-454c-8385-9a018524b1a3
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a139d683-c1c3-4f14-a28f-dd376697f8ab
+		summarizeBy: none
+		sourceColumn: ShipDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ShipMode
+		dataType: string
+		lineageTag: 40e958f9-f52b-44a2-a688-1f52be38b58a
+		summarizeBy: none
+		sourceColumn: ShipMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippingCost
+		dataType: double
+		lineageTag: 9db4ca4c-36fc-4e13-be05-de46899e03e6
+		summarizeBy: sum
+		sourceColumn: ShippingCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column State
+		dataType: string
+		lineageTag: aff89085-d675-4ea1-ba1e-ccc5006af853
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategory
+		dataType: string
+		lineageTag: 732ba483-ce5f-4f43-9a1d-8721e11017d0
+		summarizeBy: none
+		sourceColumn: SubCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: c734e8a4-e2c6-45b8-85a8-ba1ef7e9abce
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 44d7585e-e902-439d-96e0-72e4384aa720
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column weeknum
+		dataType: int64
+		formatString: 0
+		lineageTag: 868da497-a7ed-4305-bcf2-0af65293e498
+		summarizeBy: sum
+		sourceColumn: weeknum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product.Lifecycle'
+		dataType: string
+		lineageTag: ac0903af-7caa-4287-bcfd-dd08e00fc65d
+		summarizeBy: none
+		sourceColumn: Product.Lifecycle
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactSales = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Portfolio\SalesDashboard\superstore_updated_cleaned_product.csv"),[Delimiter=",", Columns=27, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Category", type text}, {"City", type text}, {"Country", type text}, {"Customer.ID", type text}, {"Customer.Name", type text}, {"Discount", Int64.Type}, {"Market", type text}, {"Order.Date", type datetime}, {"Order.ID", type text}, {"Order.Priority", type text}, {"Product.ID", type text}, {"Product.Name", type text}, {"Profit", type number}, {"Quantity", Int64.Type}, {"Region", type text}, {"Row.ID", Int64.Type}, {"Sales", Int64.Type}, {"Segment", type text}, {"Ship.Date", type datetime}, {"Ship.Mode", type text}, {"Shipping.Cost", type number}, {"State", type text}, {"Sub.Category", type text}, {"Year", Int64.Type}, {"Market2", type text}, {"weeknum", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Market", "Region"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Market2", "Region"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Row.ID", "Category", "City", "Country", "Customer.ID", "Customer.Name", "Discount", "Order.Date", "Order.ID", "Order.Priority", "Product.ID", "Product.Name", "Profit", "Quantity", "Sales", "Segment", "Ship.Date", "Ship.Mode", "Shipping.Cost", "State", "Sub.Category", "Year", "Region", "weeknum"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Reordered Columns",{{"Row.ID", "ID"}, {"Customer.ID", "CustomerID"}, {"Customer.Name", "CustomerName"}, {"Order.Date", "OrderDate"}, {"Order.ID", "OrderID"}, {"Order.Priority", "OrderPriority"}, {"Product.ID", "ProductID"}, {"Product.Name", "ProductName"}, {"Ship.Date", "ShipDate"}, {"Ship.Mode", "ShipMode"}, {"Shipping.Cost", "ShippingCost"}, {"Sub.Category", "SubCategory"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns1",{{"OrderDate", type date}, {"ShipDate", type date}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type1","Electronics & Gadgets","Electronics",Replacer.ReplaceText,{"Category"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

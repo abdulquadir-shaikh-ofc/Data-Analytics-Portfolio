@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
+  "pageOrder": [
+    "overview",
+    "product-analysis",
+    "d42c49004b02e45b3946",
+    "customer-analysis"
+  ],
+  "activePageName": "overview",
+  "landingPageName": "overview"
+}

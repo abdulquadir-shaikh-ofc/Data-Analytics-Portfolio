@@ -1,0 +1,925 @@
+table _Measures
+	lineageTag: 84c12c6f-1e53-4506-977d-2801da90f21d
+
+	measure 'Total Sales' = SUM(FactSales[Sales])
+		formatString: 0
+		lineageTag: da06b3e2-48ca-4a95-93d9-80ac4273f5f2
+
+	measure 'Total Profit' = SUM(FactSales[Profit])
+		lineageTag: 770fa715-b4dd-472f-8610-1d192f4618aa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Quantity' = SUM(FactSales[Quantity])
+		formatString: 0
+		lineageTag: 831dbbd9-a431-4056-8989-44e116a6f1f0
+
+	measure 'Total Orders' = DISTINCTCOUNT(FactSales[OrderID])
+		formatString: 0
+		lineageTag: 347473dc-7525-4a29-af06-721c55d1c465
+
+	measure 'Total Customers' = DISTINCTCOUNT(FactSales[CustomerID])
+		formatString: 0
+		lineageTag: a9981955-08e6-469d-950d-cb3ba3eeea1f
+
+	measure 'Avg Order Value' = DIVIDE([Total Sales], [Total Orders], 0)
+		formatString: 0
+		lineageTag: 32bee38a-4c71-4ae9-a412-d1addfd08d8f
+
+	measure 'Sales per Customer' =
+			
+			DIVIDE([Total Sales], [Total Customers], 0)
+		lineageTag: 662f1836-8309-4d6f-b3a1-6b30bf2987de
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Items per Order' =
+			
+			DIVIDE([Total Quantity], [Total Orders], 0)
+		lineageTag: 200da134-89a8-4e75-87d8-1851c133e5b5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit Margin %' =
+			
+			DIVIDE([Total Profit], [Total Sales], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ecab15df-23ec-4282-89cd-d50e69afb809
+
+	measure 'Profit Margin % Formatted' =
+			
+			FORMAT([Profit Margin %], "0.00%")
+		lineageTag: 81fb7f22-0803-4f7d-b3b5-b11f9d441c8c
+
+	measure 'Total Shipping Cost' =
+			
+			SUM(FactSales[ShippingCost])
+		lineageTag: da1fde33-d902-4bd3-b21f-c9a63bfa2315
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Shipping Cost %' =
+			
+			DIVIDE([Total Shipping Cost], [Total Sales], 0)
+		lineageTag: d72e50b3-f287-48b3-9529-617bab69a11a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Profit' =
+			
+			[Total Profit] - [Total Shipping Cost]
+		lineageTag: 389ef973-1824-40f3-a55f-54e2c63f41a4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Profit Margin %' =
+			
+			DIVIDE([Net Profit], [Total Sales], 0)
+		lineageTag: 92309a9e-b0be-498a-a5f9-1ef6d71a1367
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Discount' =
+			
+			SUM(FactSales[Discount])
+		formatString: 0
+		lineageTag: f8430cef-9e61-427b-85de-6b2389a71391
+
+	measure 'Avg Discount %' =
+			
+			AVERAGE(FactSales[Discount])
+		lineageTag: 23ef2738-6963-4bbf-bf93-78fe9e8ea76e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Orders with Discount' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    FactSales[Discount] > 0
+			)
+		formatString: 0
+		lineageTag: c6b9648c-e41e-4d50-9a9f-d436b2537dd3
+
+	measure 'Discount Rate' =
+			
+			DIVIDE([Orders with Discount], [Total Orders], 0)
+		lineageTag: 6b8dec7d-0754-4a07-bcdc-07f1c5a45cd3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales LY' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    SAMEPERIODLASTYEAR(DimDate[Date])
+			)
+		formatString: 0
+		lineageTag: 5053dd21-27be-4b66-9134-6f70bb82b07b
+
+	measure 'Sales YoY Growth' =
+			
+			DIVIDE([Total Sales] - [Sales LY], [Sales LY], 0)
+		lineageTag: 72b217f5-f640-4fbb-8b84-e9616d71851a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales YoY Growth %' =
+			
+			FORMAT([Sales YoY Growth], "+0.0%;-0.0%;0.0%")
+		lineageTag: fbaa3e6d-f643-4f3a-9980-848873ace763
+
+	measure 'Profit LY' =
+			
+			CALCULATE(
+			    [Total Profit],
+			    SAMEPERIODLASTYEAR(DimDate[Date])
+			)
+		lineageTag: fcad405d-da24-471e-b082-43d0ff96583a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit YoY Growth' =
+			
+			DIVIDE([Total Profit] - [Profit LY], [Profit LY], 0)
+		lineageTag: 52f247f2-9ffc-415f-a4e0-f54223cc0b6f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit YoY Growth %' =
+			
+			FORMAT([Profit YoY Growth], "+0.0%;-0.0%;0.0%")
+		lineageTag: 73f49309-2f3f-430b-aff2-9e8ca427b3a8
+
+	measure 'Orders LY' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    SAMEPERIODLASTYEAR(DimDate[Date])
+			)
+		formatString: 0
+		lineageTag: b63a6fb0-cde8-4db5-9a0f-07158d0c88e8
+
+	measure 'Orders YoY Growth' =
+			
+			DIVIDE([Total Orders] - [Orders LY], [Orders LY], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a5f7eb8e-419f-4c94-9335-30c773abddf5
+
+	measure 'Sales MTD' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    DATESMTD(DimDate[Date])
+			)
+		formatString: 0
+		lineageTag: 68ede490-6cd2-498d-a1bf-a28cee4d0558
+
+	measure 'Sales QTD' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    DATESQTD(DimDate[Date])
+			)
+		formatString: 0
+		lineageTag: 9eaba94c-52fa-4cc4-9145-90447f880cd9
+
+	measure 'Sales YTD' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    DATESYTD(DimDate[Date])
+			)
+		formatString: 0
+		lineageTag: 3a5d5145-2941-4de5-bcaf-772df8bb90e2
+
+	measure 'Profit MTD' =
+			
+			CALCULATE(
+			    [Total Profit],
+			    DATESMTD(DimDate[Date])
+			)
+		lineageTag: 0b6f3e66-ab6c-45bf-a134-02cfb2528bc9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit QTD' =
+			
+			CALCULATE(
+			    [Total Profit],
+			    DATESQTD(DimDate[Date])
+			)
+		lineageTag: 444d44be-a963-45ce-96cf-7a06fddf8d5d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit YTD' =
+			
+			CALCULATE(
+			    [Total Profit],
+			    DATESYTD(DimDate[Date])
+			)
+		lineageTag: 1f7037c1-42b8-4e34-a1f3-736bfb257d63
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales PM' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    DATEADD(DimDate[Date], -1, MONTH)
+			)
+		formatString: 0
+		lineageTag: be4a41f4-4692-4a7d-a033-8d04d1d6f668
+
+	measure 'Sales MoM Growth' =
+			
+			DIVIDE([Total Sales] - [Sales PM], [Sales PM], 0)
+		lineageTag: 84e1e3d2-11af-4ede-a9e6-28c24337cc5f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales MoM Growth %' =
+			
+			FORMAT([Sales MoM Growth], "+0.0%;-0.0%;0.0%")
+		lineageTag: a4a39295-1eb2-4704-be79-8be9c9f80959
+
+	measure 'Profit PM' =
+			
+			CALCULATE(
+			    [Total Profit],
+			    DATEADD(DimDate[Date], -1, MONTH)
+			)
+		lineageTag: 870a7e6e-f022-4e0c-be34-fcc677135af1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit MoM Growth' =
+			
+			DIVIDE([Total Profit] - [Profit PM], [Profit PM], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4955de75-25ef-4989-b862-3c118334bbc9
+
+	measure 'Sales 3M Avg' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    DATESINPERIOD(
+			        DimDate[Date],
+			        LASTDATE(DimDate[Date]),
+			        -3,
+			        MONTH
+			    )
+			) / 3
+		lineageTag: a540ee73-9223-4a06-bb97-7ce328577cb3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit 3M Avg' =
+			
+			CALCULATE(
+			    [Total Profit],
+			    DATESINPERIOD(
+			        DimDate[Date],
+			        LASTDATE(DimDate[Date]),
+			        -3,
+			        MONTH
+			    )
+			) / 3
+		lineageTag: a7038d48-dbef-4b43-9c9f-02a173e5c4e6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales 6M Avg' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    DATESINPERIOD(
+			        DimDate[Date],
+			        LASTDATE(DimDate[Date]),
+			        -6,
+			        MONTH
+			    )
+			) / 6
+		lineageTag: f5fc8e3f-cd1e-4320-abc4-816b1ad9ac82
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Category Rank by Sales' =
+			
+			RANKX(
+			    ALL(FactSales[Category]),
+			    [Total Sales],
+			    ,
+			    DESC,
+			    Dense
+			)
+		formatString: 0
+		lineageTag: c56dc728-23c4-44d6-9242-f68341176a47
+
+	measure 'Region Rank by Profit' =
+			
+			RANKX(
+			    ALL(FactSales[Region]),
+			    [Total Profit],
+			    ,
+			    DESC,
+			    Dense
+			)
+		formatString: 0
+		lineageTag: 9646d8b9-8a28-4bc2-a510-09fbebcea407
+
+	measure 'Product Rank by Profit' =
+			
+			RANKX(
+			    ALL(FactSales[ProductName]),
+			    [Total Profit],
+			    ,
+			    DESC,
+			    Dense
+			)
+		formatString: 0
+		lineageTag: d4281285-0188-4b8e-8787-8f12be256f16
+
+	measure 'Customer Rank by Sales' =
+			
+			RANKX(
+			    ALL(FactSales[CustomerName]),
+			    [Total Sales],
+			    ,
+			    DESC,
+			    Dense
+			)
+		formatString: 0
+		lineageTag: cf70a3ba-a9c1-4320-9159-3f49f6c27e7a
+
+	measure 'Regional Sales Share %' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    CALCULATE([Total Sales], ALL(FactSales[Region])),
+			    0
+			)
+		lineageTag: f3be7391-48d7-4dab-b2fb-04c08feef690
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profitable Orders' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    FactSales[Profit] > 0
+			)
+		formatString: 0
+		lineageTag: 54688f3b-1f63-4032-8b23-eb162ba2e800
+
+	measure 'Category Sales Share %' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    CALCULATE([Total Sales], ALL(FactSales[Category])),
+			    0
+			)
+		lineageTag: 371c4560-a897-4109-aaad-b1d018ebce8a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Segment Sales Share %' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    CALCULATE([Total Sales], ALL(FactSales[Segment])),
+			    0
+			)
+		lineageTag: 8b29cef4-8cf7-42a2-81e8-84a6e149298f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Product Sales Share %' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    CALCULATE([Total Sales], ALL(FactSales[ProductName])),
+			    0
+			)
+		lineageTag: 1b46ed0d-cd5f-46d9-8439-b23105cd3188
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Top 10 Products Sales' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    TOPN(10, ALL(FactSales[ProductName]), [Total Sales])
+			)
+		formatString: 0
+		lineageTag: 87ec767a-59ff-4458-903d-ba12f50b7b67
+
+	measure 'Top 10 Customers Sales' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    TOPN(10, ALL(FactSales[CustomerName]), [Total Sales])
+			)
+		formatString: 0
+		lineageTag: 9a2ae764-0b40-4af8-820b-3ba033c20c9d
+
+	measure 'Top 5 Regions Sales' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    TOPN(5, ALL(FactSales[Region]), [Total Sales])
+			)
+		formatString: 0
+		lineageTag: 08dde9b1-5412-4d30-8ab1-32f49fd3ce53
+
+	measure 'High Value Orders' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    FactSales[Sales] > 1000
+			)
+		formatString: 0
+		lineageTag: 88bba2d2-87a4-4d10-b419-faf905645343
+
+	measure 'Low Margin Products Count' =
+			
+			CALCULATE(
+			    [Total Products],
+			    [Profit Margin %] < 0.1
+			)
+		lineageTag: 10181086-8d7a-4ee6-9ff0-ee24d00535f7
+
+	measure 'Total Products' =
+			
+			DISTINCTCOUNT(FactSales[ProductID])
+		formatString: 0
+		lineageTag: 6e8e86b9-96cd-42ee-b953-28df081bf6c4
+
+	measure 'Customer Lifetime Value' =
+			
+			AVERAGEX(
+			    VALUES(FactSales[CustomerID]),
+			    CALCULATE([Total Sales])
+			)
+		lineageTag: b665def5-6bff-445e-a12e-473faccdc44d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Loss Making Orders' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    FactSales[Profit] < 0
+			)
+		formatString: 0
+		lineageTag: ba8c1346-1cf6-4e13-b812-58d1dd6f0d4b
+
+	measure 'Repeat Customers' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(FactSales[CustomerID]),
+			    FILTER(
+			        VALUES(FactSales[CustomerID]),
+			        CALCULATE(DISTINCTCOUNT(FactSales[OrderID])) > 1
+			    )
+			)
+		formatString: 0
+		lineageTag: a53b46a9-fde2-49d5-b5b9-7b117c530fcc
+
+	measure 'Avg Customer Orders' =
+			
+			DIVIDE([Total Orders], [Total Customers], 0)
+		lineageTag: 3b2ba738-a06a-4b23-8563-639d9f0c6985
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'New Customers' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(FactSales[CustomerID]),
+			    FILTER(
+			        ALL(FactSales),
+			        FactSales[OrderDate] = 
+			            CALCULATE(
+			                MIN(FactSales[OrderDate]),
+			                ALLEXCEPT(FactSales, FactSales[CustomerID])
+			            )
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: 405bfddf-ca56-49dc-9c7b-db9f8082161a
+
+	measure 'Repeat Customer Rate' =
+			
+			DIVIDE([Repeat Customers], [Total Customers], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7c4c96af-8764-47d4-b791-d6334c79c65f
+
+	measure 'Product Performance Category' = ```
+			
+			VAR ProductSales = [Total Sales]
+			VAR ProductProfit = [Total Profit]
+			VAR AvgSales = CALCULATE([Total Sales], ALL(FactSales[ProductName])) / DISTINCTCOUNT(FactSales[ProductName])
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ProductProfit > 0 && ProductSales > AvgSales, "⭐ High Performer",
+			    ProductProfit > 0 && ProductSales <= AvgSales, "✓ Profitable",
+			    ProductProfit <= 0, "⚠ Loss Maker",
+			    "→ Average"
+			)
+			
+			```
+		lineageTag: b3f0438d-a74f-47de-ad20-bb6f0bd4425b
+
+	measure 'Products Above Avg Sales' =
+			
+			VAR AvgSales = DIVIDE([Total Sales], [Total Products], 0)
+			RETURN
+			CALCULATE(
+			    [Total Products],
+			    FILTER(
+			        VALUES(FactSales[ProductName]),
+			        [Total Sales] > AvgSales
+			    )
+			)
+		formatString: 0
+		lineageTag: 1453bce2-2329-4f51-8d34-c687694ac6bb
+
+	measure 'Best Performing Region' =
+			
+			CALCULATE(
+			    FIRSTNONBLANK(FactSales[Region], [Total Sales]),
+			    TOPN(1, ALL(FactSales[Region]), [Total Sales])
+			)
+		lineageTag: a9f359cf-56ef-4aff-b991-23949c44dbe7
+
+	measure 'Best Performing Category' = ```
+			
+			CALCULATE(
+			    FIRSTNONBLANK(FactSales[Category], [Total Sales]),
+			    TOPN(1, ALL(FactSales[Category]), [Total Sales])
+			)
+			
+			```
+		lineageTag: 90bea169-3077-47ba-886d-7734b0e3cc84
+
+	measure 'Best Performing Product' =
+			
+			CALCULATE(
+			    FIRSTNONBLANK(FactSales[ProductName], [Total Profit]),
+			    TOPN(1, ALL(FactSales[ProductName]), [Total Profit])
+			)
+		lineageTag: f82934dc-99b1-4ba3-add0-0c43d3293f56
+
+	measure 'Worst Performing Product' =
+			
+			CALCULATE(
+			    FIRSTNONBLANK(FactSales[ProductName], [Total Profit]),
+			    TOPN(1, ALL(FactSales[ProductName]), [Total Profit], ASC)
+			)
+		lineageTag: e6e3833a-48db-4cbf-b730-9abb5967933c
+
+	measure 'Sales Trend Indicator' =
+			
+			VAR CurrentSales = [Total Sales]
+			VAR PreviousSales = [Sales LY]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    CurrentSales > PreviousSales * 1.15, "↑↑ Strong Growth",
+			    CurrentSales > PreviousSales * 1.05, "↑ Growth",
+			    CurrentSales >= PreviousSales * 0.95, "→ Stable",
+			    CurrentSales >= PreviousSales * 0.85, "↓ Slight Decline",
+			    "↓↓ Significant Decline"
+			)
+		lineageTag: febd329c-f3e5-4746-aaf5-85115412ebd2
+
+	measure 'Profit Trend Indicator' =
+			
+			VAR CurrentProfit = [Total Profit]
+			VAR PreviousProfit = [Profit LY]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    CurrentProfit > PreviousProfit * 1.15, "↑↑ Strong Growth",
+			    CurrentProfit > PreviousProfit * 1.05, "↑ Growth",
+			    CurrentProfit >= PreviousProfit * 0.95, "→ Stable",
+			    CurrentProfit >= PreviousProfit * 0.85, "↓ Slight Decline",
+			    "↓↓ Significant Decline"
+			)
+		lineageTag: 5b5905d5-1e74-4814-8680-ce39069047a5
+
+	measure 'Profit Color' =
+			
+			IF([Total Profit] > 0, "Green", "Red")
+		lineageTag: 9600611f-ff52-49fb-baec-b6a714340a3a
+
+	measure 'Profit Margin Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Profit Margin %] >= 0.15, "#10B981",  // Green - Excellent
+			    [Profit Margin %] >= 0.10, "#84CC16",  // Light Green - Good
+			    [Profit Margin %] >= 0.05, "#F59E0B",  // Amber - Fair
+			    "#EF4444"                               // Red - Poor
+			)
+		lineageTag: 5a5a0971-50f0-421e-b790-1e2516ae8144
+
+	measure 'YoY Growth Color' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    [Sales YoY Growth] >= 0.15, "#10B981",  // Strong Green
+			    [Sales YoY Growth] >= 0.05, "#84CC16",  // Light Green
+			    [Sales YoY Growth] >= 0, "#F59E0B",     // Amber
+			    "#EF4444"                                // Red
+			)
+			
+			```
+		lineageTag: 0853ddd7-f819-43ef-a0d2-31adb471f984
+
+	measure 'Traffic Light - Profit Margin' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Profit Margin %] >= 0.12, "🟢",
+			    [Profit Margin %] >= 0.08, "🟡",
+			    "🔴"
+			)
+		lineageTag: b010e1ae-c68f-4fe8-adf1-1620d6e0efc2
+
+	measure 'Selected Period' =
+			
+			IF(
+			    ISFILTERED(DimDate[Year]),
+			    "Year: " & CONCATENATEX(VALUES(DimDate[Year]), DimDate[Year], ", "),
+			    "All Years (2011-2014)"
+			)
+		lineageTag: c70909b6-7615-4bb6-b241-0b6e4e428e60
+
+	measure 'Selected Region' =
+			
+			IF(
+			    ISFILTERED(FactSales[Region]),
+			    "Region: " & CONCATENATEX(VALUES(FactSales[Region]), FactSales[Region], ", "),
+			    "All Regions"
+			)
+		lineageTag: d3233d8e-f5ff-4f8a-8dc4-cb4f09842e04
+
+	measure 'Selected Category' =
+			
+			IF(
+			    ISFILTERED(FactSales[Category]),
+			    "Category: " & CONCATENATEX(VALUES(FactSales[Category]), FactSales[Category], ", "),
+			    "All Categories"
+			)
+		lineageTag: 29597918-a066-4f99-8330-ac01e053861e
+
+	measure 'Dashboard Title' =
+			
+			"Sales & Retail Analytics Dashboard"-- & [Selected Period]
+		lineageTag: d4e849d0-16dd-46f0-b5a2-c6ccd85a7497
+
+	measure 'Filter Context Display' =
+			
+			[Selected Period] & " | " & [Selected Region] & " | " & [Selected Category]
+		lineageTag: 21ac52c8-8366-402e-b9be-99d808e52c5b
+
+	measure 'Avg Shipping Cost' =
+			
+			AVERAGE(FactSales[ShippingCost])
+		lineageTag: aa2018ea-0c7f-45eb-af89-9e8c18f0f6fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Shipping Efficiency' =
+			
+			DIVIDE([Total Sales], [Total Shipping Cost], 0)
+		lineageTag: 02b71709-28fe-4261-9b73-b75dd3fda6ab
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Same Day Orders' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    FactSales[ShipMode] = "Same Day"
+			)
+		formatString: 0
+		lineageTag: 77f1c87a-fe7b-4c0b-a8e6-c5d1a740c64f
+
+	measure 'Same Day Orders %' =
+			
+			DIVIDE([Same Day Orders], [Total Orders], 0)
+		lineageTag: 47b8f3d9-d4f0-4ccd-8dce-d693ee739d7a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Delivery Time' =
+			
+			AVERAGE(Sales[ShipDate] - Sales[OrderDate])
+		lineageTag: b333c50d-6201-47c8-ba3a-4c369787b44e
+
+	measure 'Sales Pareto 80%' = ```
+			
+			VAR TotalSalesValue = [Total Sales]
+			VAR CumulativeSales = 
+			    CALCULATE(
+			        [Total Sales],
+			        FILTER(
+			            ALL(Sales[ProductName]),
+			            [Total Sales] >= EARLIER([Total Sales])
+			        )
+			    )
+			RETURN
+			IF(CumulativeSales <= TotalSalesValue * 0.8, "Top 80%", "Bottom 20%")
+			```
+		lineageTag: 7e7c0a1d-849b-4e2b-bf2a-58df4fc98d79
+
+	measure 'ABC Classification' = ```
+			
+			VAR ProductSales = [Total Sales]
+			VAR AllSales = CALCULATE([Total Sales], ALL(FactSales[ProductName]))
+			VAR Contribution = DIVIDE(ProductSales, AllSales, 0)
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    Contribution >= 0.2, "A - High Value",
+			    Contribution >= 0.05, "B - Medium Value",
+			    "C - Low Value"
+			)
+			
+			```
+		lineageTag: 4ed6377a-3438-43e6-bd6d-bb68cf66b9d4
+
+	measure 'Sales Volatility' =
+			
+			STDEV.P(FactSales[Sales])
+		lineageTag: 3c27bfa4-da42-4c6d-9151-48efc2d53951
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Coefficient of Variation' =
+			
+			DIVIDE([Sales Volatility], AVERAGE(FactSales[Sales]), 0)
+		lineageTag: a7e47f75-0d5b-4e51-8ea3-1af1bdcadae1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Min Order Value' =
+			
+			MIN(FactSales[Sales])
+		formatString: 0
+		lineageTag: bf4986cd-3d91-482c-b577-9890857d01f9
+
+	measure 'Max Order Value' =
+			
+			MAX(FactSales[Sales])
+		formatString: 0
+		lineageTag: 93c2158f-5d8a-4f19-b9ae-6ff66a3ebee5
+
+	measure 'Median Order Value' =
+			
+			MEDIAN(FactSales[Sales])
+		lineageTag: 29ac51ad-90ac-471f-8d2b-18ffa5a011d5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Std Dev' =
+			
+			STDEV.P(FactSales[Sales])
+		lineageTag: 2cfb2055-c726-43f8-b7ad-29c11b85c648
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Orders Missing Profit' = ```
+			
+			CALCULATE(
+			    [Total Orders],
+			    ISBLANK(FactSales[Profit])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: ee1a2955-3fce-43a8-bd1f-eb94d8151987
+
+	measure 'Orders with Zero Sales' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    FactSales[Sales] = 0
+			)
+		formatString: 0
+		lineageTag: 74dfef41-93e1-42b8-ad4f-3694f6ddc953
+
+	measure 'Negative Profit Orders' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    FactSales[Profit] < 0
+			)
+		formatString: 0
+		lineageTag: a1a5464c-b2c9-4f68-9fc0-fe4e47353585
+
+	measure 'Data Quality Score' =
+			
+			1 - DIVIDE([Orders Missing Profit] + [Orders with Zero Sales], [Total Orders], 0)
+		lineageTag: 71d529db-6cdd-425a-9f45-3c4f5aaad0b2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Product Sales' =
+			
+			AVERAGEX(
+			    VALUES(FactSales[ProductName]),
+			    [Total Sales]
+			)
+		lineageTag: 5f92f331-1d1e-4f85-972e-f79fc32edcec
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Title - Top Customers' = "TOP 5 CUSTOMER"
+		lineageTag: b81ee6bd-0e1b-4410-bffd-e07110c178d9
+
+	measure 'Title - Top Regions' = "TOP REGIONS"
+		lineageTag: 2d98a498-ea08-4cb0-ad89-767545909a5d
+
+	measure 'Title - Trend Over Time' = ```
+			SWITCH(
+			    SELECTEDVALUE(Parameter[Metric Order]),
+			    0, "SALES",
+			    1, "PROFIT",
+			    2, "QUANTITY",
+			    3, "ORDERS",
+			    4, "CUSTOMERS",
+			    BLANK()
+			)  
+			    & " TREND OVER TIME"
+			```
+		lineageTag: 85f0bd9c-51a8-41a5-9f44-1a299f2b00a1
+
+	measure 'Top 10 Metric' =
+			SWITCH(
+			    SELECTEDVALUE(Parameter[Metric Order]),
+			    0, [Total Sales],
+			    1, [Total Profit],
+			    2, [Total Quantity],
+			    3, [Total Orders],
+			    4, [Total Customers],
+			    [Total Sales]
+			)
+		lineageTag: af5f71b6-5bc3-458d-80ba-2885b7c7f6f7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Title - Top Product' =
+			
+			VAR _metric =
+			    SWITCH(
+			        SELECTEDVALUE(Parameter[Metric Order]),
+			        0, "SALES",
+			        1, "PROFIT",
+			        2, "QUANTITY",
+			        3, "ORDERS",
+			        4, "CUSTOMERS",
+			        BLANK()
+			    )
+			
+			RETURN
+			    "TOP 10 PRODUCT BY " & _metric
+		lineageTag: bfdef346-67b8-445b-a5d5-e1eb50bf7352
+
+	measure 'Title - Category' =
+			
+			VAR _metric =
+			    SWITCH(
+			        SELECTEDVALUE(Parameter[Metric Order]),
+			        0, "SALES",
+			        1, "PROFIT",
+			        2, "QUANTITY",
+			        3, "ORDERS",
+			        4, "CUSTOMERS",
+			        BLANK()
+			    )
+			
+			RETURN
+			    "CATEGORY BY " & _metric
+		lineageTag: 79b810f7-f463-4b16-87c8-0ec9b61716eb
+
+	column Info
+		lineageTag: 9ec2bfa4-8464-44d5-9e6f-55c62b84b354
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Info]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW("Info", "This table contains all measures")
+
+	annotation PBI_Id = 4090f5608ba84144bad4c9998093320b
+
