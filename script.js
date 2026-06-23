@@ -1,3 +1,23 @@
+// Mobile Nav Toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active', isOpen);
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navMenu.querySelectorAll('.nav-link').forEach((link) => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
+
 // Navigation Active Link
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section');
@@ -27,8 +47,11 @@ window.addEventListener('scroll', updateActiveNavLink);
 // Smooth Scroll Click Handler
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (!href.startsWith('#')) return;
+
         e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
+        const targetId = href.substring(1);
         const targetSection = document.getElementById(targetId);
         
         if (targetSection) {
@@ -95,7 +118,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe skill cards and project cards
-document.querySelectorAll('.skill-card, .project-card, .stat-card').forEach(el => {
+document.querySelectorAll('.skill-card, .project-card, .stat-card, .timeline-content, .section-content, .about-panel, .dashboard-header').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
